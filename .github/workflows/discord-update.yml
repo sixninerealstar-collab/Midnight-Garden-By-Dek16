@@ -1,0 +1,52 @@
+
+name: Discord Game Update
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Discord notification
+        env:
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          VERSION: ${{ github.event.release.tag_name }}
+          RELEASE_URL: ${{ github.event.release.html_url }}
+          RELEASE_NAME: ${{ github.event.release.name }}
+          RELEASE_NOTES: ${{ github.event.release.body }}
+        run: |
+          MESSAGE=$(jq -n \
+            --arg version "$VERSION" \
+            --arg name "$RELEASE_NAME" \
+            --arg url "$RELEASE_URL" \
+            --arg notes "$RELEASE_NOTES" \
+            '{
+              username: "Midnight Garden",
+              embeds: [{
+                title: ("🌙 Midnight Garden อัปเดตใหม่: " + ($name | if . == "" then $version else . end)),
+                url: $url,
+                description: (
+                  "**เวอร์ชัน:** " + $version +
+                  "\n\n" +
+                  (if $notes == "" then "มีการเผยแพร่เวอร์ชันใหม่แล้ว!" else $notes[0:3000] end)
+                ),
+                color: 9109504,
+                footer: {
+                  text: "Midnight Garden By Dek16"
+                },
+                timestamp: (now | todate)
+              }]
+            }')
+
+          curl --fail --silent --show-error \
+            -H "Content-Type: application/json" \
+            -X POST \
+            -d "$MESSAGE" \
+            "$WEBHOOK_URL"
