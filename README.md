@@ -79,5 +79,6 @@
 
 - **ชื่อเกม:** Midnight Garden
 - **ผู้พัฒนา:** Dek16
+- **Instagarm:** letskiii.angelo
 
 ขอบคุณที่สนับสนุนและทดลองเล่น **Midnight Garden — สวนเที่ยงคืน**
