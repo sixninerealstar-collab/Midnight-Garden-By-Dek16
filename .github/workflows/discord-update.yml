@@ -49,4 +49,4 @@ jobs:
             -H "Content-Type: application/json" \
             -X POST \
             -d "$MESSAGE" \
-            "$WEBHOOK_URL"
+             "$WEBHOOK_URL"
