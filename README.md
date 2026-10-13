@@ -1,7 +1,7 @@
 # Midnight Garden — สวนเที่ยงคืน
 
 <p align="center">
-  <img src="logo.png" alt="Midnight Garden Logo" width="500">
+  <img src="โลโก้สวนเที่ยงคืนใต้จันทร์หลอน.png" alt="Midnight Garden Logo" width="500">
 </p>
 
 **Midnight Garden By Dek16** คือเกมเอาชีวิตรอดบรรยากาศสยองขวัญในสวนยามค่ำคืน ผู้เล่นต้องสำรวจพื้นที่ ดูแลสถานะของตัวละคร ใช้สิ่งของที่มีให้เหมาะสม และเอาชีวิตรอดให้นานที่สุดเท่าที่จะทำได้
